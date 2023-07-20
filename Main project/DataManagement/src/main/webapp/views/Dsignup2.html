@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../assets/Css/style1.css">
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+		<link rel="icon" type="image/x-icon" href="../assets/Images/company_logo.png">
+		<title>Registration page</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row main">
+				<div class="main-login main-center">
+				<h5>Sign up once and upload data to cloudflare any time.</h5>
+					<form class="" id="signupForm" method="post" action="#">
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Enter Your Name</label>
+							<h5  class="errors" id="namecheck"  >**Username is missing</h5>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Enter Your Email</label>
+							<h5  class="errors" id="emailcheck" >**Email is invalid</h5>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="password" class="cols-sm-2 control-label">Date of Birth</label>
+							<h5  class="errors" id="dateOfBirthcheck" >**Date of Birth Not selected</h5>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth"  placeholder="Enter your Date of Birth"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="confirm" class="cols-sm-2 control-label">Age</label>
+							<h5  class="errors" id="personAgecheck" >**Age is missing</h5>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="number" class="form-control" name="personAge" id="personAge"  placeholder="Enter your age"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="confirm" class="cols-sm-2 control-label">Phone Number</label>
+							<h5  class="errors" id="phoneNumnercheck" >**Phone Number is missing</h5>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="tel" class="form-control" name="phoneNumner" id="phoneNumner"  placeholder="Enter your Phone number"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="username" class="cols-sm-2 control-label">Create Username</label>
+							<h5  class="errors" id="userNamecheck" >**User Exist is missing</h5>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="userName" id="userName"  placeholder="Create your Username"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="confirm" class="cols-sm-2 control-label">Password</label>
+							<h5  class="errors" id="passWordcheck" >**Password is missing</h5>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="passWord" id="passWord"  placeholder="Create your Password"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+							<h5  class="errors" id="confirmPasswordcheck" >**Password not matched</h5>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="confirmPassword" id="confirmPassword"  placeholder="Confirm your Password"/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group ">
+							<a type="button" id="buttonForRegistration" class="btn btn-primary btn-lg btn-block login-button">Register</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="validations.js"></script>
+</html>
