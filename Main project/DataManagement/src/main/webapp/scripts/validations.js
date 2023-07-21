@@ -49,7 +49,7 @@ $(document).ready(function() {
         }
         if( isNameValid && isEmailValid && isDateOfBirthValid && isPersonAgeValid && isPhoneNumberValid && isUsernameValid && isPasswordValid && isConfirmPasswordValid){
             $.ajax({
-                url : "http://localhost:8080/DataManagement/userRegistrationData",
+                url : "views/userRegistrationData",
                 type : "POST",
                 data : {
                    "name" : $("#name").val().trim(),

@@ -42,43 +42,55 @@ public class userRegistrationData extends HttpServlet {
 		ResultSet rs = null;
 		//creating the preparedstatement for query execution
 		PreparedStatement st = null;
-		String email = request.getParameter("email");
-		String DOB = request.getParameter("DOB");
-		String Age = request.getParameter("Age");
-		String PhNo = request.getParameter("PhNo");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String name = request.getParameter("name");
-		String query = "INSERT INTO anilsProjectUsersData VALUES(?,?,?,?,?,?,?);";
+//		String name = request.getParameter("name");
+//		String email = request.getParameter("email");
+//		String DOB = request.getParameter("DOB");
+//		int Age = Integer.parseInt(request.getParameter("Age"));
+//		String PhNo = request.getParameter("PhNo");
+//		String username = request.getParameter("username");
+//		String password = request.getParameter("password");
+		String query = "INSERT INTO Anil.anilsProjectUsersData(name,dob,age,email,phoneNumber,userNmae,passWord,isDelete,createdOn,createdBy) VALUES(?,?,?,?,?,?,?, 0,GETUTCDATE(),?);";
 		//Regestring the driver and creating the jdbc connection
 		try {
 			Class.forName(DRIVER);
             conn = DriverManager.getConnection(url, userName, passWord);
             st = conn.prepareStatement(query);
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
+		catch(Exception e) {
+			response.getWriter().println("Error occured when Creating the connection");
+		}
 		try {
 			st.setString(1, request.getParameter("name"));
 			st.setString(2, request.getParameter("DOB"));
-			st.setString(3, request.getParameter("Age"));
+			st.setInt(3, Integer.parseInt(request.getParameter("Age")));
 			st.setString(4, request.getParameter("email"));
 			st.setString(5, request.getParameter("PhNo"));
 			st.setString(6, request.getParameter("username"));
 			st.setString(7, request.getParameter("password"));
+			st.setString(8, request.getParameter("username"));
 			st.execute();
+			response.getWriter().println("Registration done Sucessfully");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			response.getWriter().println("SQL Error occured");
 		}
-		if(conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		catch (Exception e) {
+			//e.printStackTrace();
+			response.getWriter().println("Error occured");
+		}
+		finally {
+			if(conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
+					response.getWriter().println("Error occured when closing the connection");
+				}
 			}
 		}
-		response.getWriter().append("Sucessfully Executed");
 	}
 
 	/**

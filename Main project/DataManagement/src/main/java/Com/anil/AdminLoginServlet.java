@@ -1,10 +1,12 @@
 package Com.anil;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,13 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.JSONObject;
-
 /**
- * Servlet implementation class LoginValidation
+ * Servlet implementation class AdminLoginServlet
  */
-@WebServlet("/LoginValidation")
-public class LoginValidation extends HttpServlet {
+@WebServlet("/AdminLoginServlet")
+public class AdminLoginServlet extends HttpServlet {
 	private static final String url = "jdbc:sqlserver://192.168.3.125:1433;database=SQLTraining";
     private static final String userName = "AnilVenkat";
     private static final String passWord = "anRen!sql34";
@@ -28,7 +28,7 @@ public class LoginValidation extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginValidation() {
+    public AdminLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,12 +37,7 @@ public class LoginValidation extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// reading the data from the request
-		//BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
-		//creating the connection variable
-		//String recivedData = br.readLine();
-		//JSONObject jsonObject = new JSONObject(recivedData);
-		//System.out.println(recivedData);
+		// TODO Auto-generated method stub
 		String entereduserName = request.getParameter("username");
 		String enteredpassword = request.getParameter("password");
 		boolean isAvalable = false;
@@ -59,7 +54,7 @@ public class LoginValidation extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-		String query = "SELECT passWord from Anil.anilsProjectUsersData WHERE userNmae='" + entereduserName + "';";
+		String query = "SELECT passWord from Anil.AdminsData WHERE userName='" + entereduserName + "';";
 		try {
 			rs = st.executeQuery(query);
 			if(rs.next()) {
@@ -72,7 +67,7 @@ public class LoginValidation extends HttpServlet {
 		if(isAvalable) {
 			if(enteredpassword.equals(password)){
 				HttpSession session = request.getSession();
-				session.setAttribute("type", "user");
+				session.setAttribute("type", "admin");
 				session.setAttribute("username", entereduserName);
 				session.setAttribute("password", password);
 				response.getWriter().print("Correct Details");
@@ -90,6 +85,7 @@ public class LoginValidation extends HttpServlet {
 			e.printStackTrace();
 		}
 
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
