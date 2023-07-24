@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
+
 /**
  * Servlet implementation class SessionData
  */
@@ -28,10 +30,20 @@ public class SessionData extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		JSONObject obj = new JSONObject();
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
-		response.getWriter().println(username);
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		if(username == null) {
+			obj.put("redirect" , "true");
+			obj.put("url" , "views/User_Login_page.html");
+			response.getWriter().print(obj.toString());
+		}
+		else {
+			obj.put("redirect" , "false");
+			obj.put("username", username);
+			response.getWriter().print(obj.toString());
+		}
+		
 	}
 
 	/**

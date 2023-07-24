@@ -2,11 +2,24 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>logged in page</title>
+<link rel="stylesheet" href="../assets/Css/cdn.jsdelivr.net_npm_bootstrap@5.3.0_dist_css_bootstrap.min.css">
+<title>Data Display</title>
 </head>
 <body>
-hello
-
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Cloudflare</a>
+          <span id="usernameDisplay"></span>
+          <div class="collapse navbar-collapse justify-content-end " id="navbarNavAltMarkup">
+            <div class="navbar-nav ">
+              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#">Contact Us</a>
+              <button class="btn btn-info btn1 text-white">Log Out</button>
+            </div>
+          </div>
+        </div>
+      </nav>
 </body>
 <script src="../scripts/ajax.googleapis.com_ajax_libs_jquery_3.6.4_jquery.min.js"></script>
 <script src="../scripts/reteriveDataSession.js"></script>

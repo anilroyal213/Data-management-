@@ -2,15 +2,13 @@ $(document).ready(function(){
     $.ajax({
         url : "../SessionData",
         type : "GET",
-        success : function(data){
-            var data = String(data);
-            $('body').append("1Hello" + data);
-            if(data.localeCompare("null")){
-                $('body').append("2Hello" + data);
-                //window.location.replace("http://www.w3schools.com");
+        success : function(event){
+            var data = JSON.parse(event);
+            if(data["redirect"] === "true"){
+                window.location.href = "DataManagement/views/User_Login_page.html"
             }
             else{
-                $('body').append("3Hello" + data);
+                $('#usernameDisplay').append(data["username"]);
             }
         },
         error : function(error){

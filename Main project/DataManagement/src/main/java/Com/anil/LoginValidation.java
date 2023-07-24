@@ -37,21 +37,14 @@ public class LoginValidation extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// reading the data from the request
-		//BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
-		//creating the connection variable
-		//String recivedData = br.readLine();
-		//JSONObject jsonObject = new JSONObject(recivedData);
-		//System.out.println(recivedData);
+		JSONObject object = new JSONObject();
 		String entereduserName = request.getParameter("username");
 		String enteredpassword = request.getParameter("password");
 		boolean isAvalable = false;
 		Connection conn = null;
 		ResultSet rs = null;
 		String password = "";
-		//creating the preparedstatement for query execution
 		Statement st = null;
-		//Regestring the driver and creating the jdbc connection
 		try {
 			Class.forName(DRIVER);
             conn = DriverManager.getConnection(url, userName, passWord);
@@ -59,7 +52,7 @@ public class LoginValidation extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-		String query = "SELECT passWord from Anil.anilsProjectUsersData WHERE userNmae='" + entereduserName + "';";
+		String query = "SELECT passWord from [Anil].[anilsProjectUsersData] WHERE userNmae='" + entereduserName + "';";
 		try {
 			rs = st.executeQuery(query);
 			if(rs.next()) {
@@ -74,20 +67,36 @@ public class LoginValidation extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("type", "user");
 				session.setAttribute("username", entereduserName);
-				session.setAttribute("password", password);
-				response.getWriter().print("Correct Details");
+				object.put("username", "true");
+				object.put("password", "true");
+				response.getWriter().println(object.toString());
 			}
 			else {
-				response.getWriter().print("Password Wrong");
+				object.put("username", "true");
+				object.put("password", "false");
+				response.getWriter().println(object.toString());
 			}
 		}
 		else {
-			response.getWriter().print("Username and Password Wrong");
+			object.put("username", "false");
+			object.put("password", "false");
+			response.getWriter().println(object.toString());
 		}
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if(st != null) {
+			try {
+				st.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if(conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
