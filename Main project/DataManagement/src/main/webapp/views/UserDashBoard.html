@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../assets/Css/cdn.jsdelivr.net_npm_bootstrap@5.3.0_dist_css_bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../assets/Css/UserDashboard.css">
+    <link rel="icon" type="image/x-icon" href="../assets/Images/company_logo.png">
+    <title>User DashBoard</title>
 </head>
 <body>
     <nav class="navbar navbar-expand navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Cloudflare</a>
-          <span id="usernameDisplay"> Hello</span>
+          <span id="usernameDisplay"></span>
           <div class="collapse navbar-collapse justify-content-end " id="navbarNavAltMarkup">
             <div class="navbar-nav ">
               <a class="nav-link" href="#">Home</a>
@@ -21,5 +23,36 @@
           </div>
         </div>
       </nav>
+      <div id="pageContentsContainer" class="grid-template-parent">
+        <button class="grid-template-childs" id="uploadData">
+          <div class="card border-dark mb-3" style="max-width: 18rem;">
+            <div class="card-body text-dark">
+              <h5 class="card-title">Upload Data</h5>
+              <p class="card-text">Data</p>	
+            </div>
+          </div>
+        </button>
+        <button class="grid-template-childs" id="viewUploadedData">
+          <div class="card border-dark mb-3" style="max-width: 18rem;">
+            <div class="card-body text-dark">
+              <h5 class="card-title">View/edit/delete Uploaded Data</h5>
+              <p class="card-text">Data</p>
+            </div>
+          </div>
+        </button>
+        <button class="grid-template-childs" id="viewHistory">
+          <div class="card border-dark mb-3" style="max-width: 18rem;">
+            <div class="card-body text-dark">
+              <h5 class="card-title">View History</h5>
+              <p class="card-text">Data </p>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div id="pageContentsView">
+        
+      </div>
 </body>
+<script src="../scripts/code.jquery.com_jquery-1.11.1.min.js"></script>
+<script src="../scripts/UserDashboardViews.js"></script>
 </html>

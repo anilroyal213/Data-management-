@@ -44,6 +44,7 @@ public class LoginValidation extends HttpServlet {
 		Connection conn = null;
 		ResultSet rs = null;
 		String password = "";
+		String name = "";
 		Statement st = null;
 		try {
 			Class.forName(DRIVER);
@@ -52,12 +53,13 @@ public class LoginValidation extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-		String query = "SELECT passWord from [Anil].[anilsProjectUsersData] WHERE userNmae='" + entereduserName + "';";
+		String query = "SELECT passWord,name from [Anil].[anilsProjectUsersData] WHERE userName='" + entereduserName + "';";
 		try {
 			rs = st.executeQuery(query);
 			if(rs.next()) {
 				isAvalable = true;
 				password = rs.getString("passWord");
+				name = rs.getString("name");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -67,8 +69,10 @@ public class LoginValidation extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("type", "user");
 				session.setAttribute("username", entereduserName);
+				session.setAttribute("name", name);
 				object.put("username", "true");
 				object.put("password", "true");
+				object.put("name", name);
 				response.getWriter().println(object.toString());
 			}
 			else {

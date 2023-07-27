@@ -33,6 +33,7 @@ public class SessionData extends HttpServlet {
 		JSONObject obj = new JSONObject();
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
+		String name = (String) session.getAttribute("name");
 		if(username == null) {
 			obj.put("redirect" , "true");
 			obj.put("url" , "views/User_Login_page.html");
@@ -41,6 +42,7 @@ public class SessionData extends HttpServlet {
 		else {
 			obj.put("redirect" , "false");
 			obj.put("username", username);
+			obj.put("name" , name);
 			response.getWriter().print(obj.toString());
 		}
 		

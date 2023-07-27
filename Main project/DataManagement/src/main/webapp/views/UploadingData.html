@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../assets/Css/cdn.jsdelivr.net_npm_bootstrap@5.3.0_dist_css_bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Upload Data</title>
 </head>
 <body>
     <nav class="navbar navbar-expand navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Cloudflare</a>
-          <span id="usernameDisplay"> Hello</span>
+          <span id="usernameDisplay"></span>
           <div class="collapse navbar-collapse justify-content-end " id="navbarNavAltMarkup">
             <div class="navbar-nav ">
               <a class="nav-link" href="#">Home</a>
@@ -21,5 +21,15 @@
           </div>
         </div>
       </nav>
+      <div id="justify-content-center">
+        <form id="UploadFile" enctype="multipart/form-data">
+          <!-- <input type="text" name="inputtext" id="inputtext" placeholder="Enter"><br> -->
+          <input type="file" name="file" id="fileInput" required accept=".csv"><br>
+          <button type="submit" id="submitButton">Upload</button>
+      </form>
+      </div>
 </body>
+<script src="../scripts/code.jquery.com_jquery-1.11.1.min.js"></script>
+<!-- <script src="../scripts/reteriveDataSession.js"></script> -->
+<script src="../scripts/UploadingData.js"></script>
 </html>

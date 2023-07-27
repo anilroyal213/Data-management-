@@ -5,14 +5,14 @@ $(document).ready(function(){
         success : function(event){
             var data = JSON.parse(event);
             if(data["redirect"] === "true"){
-                window.location.href = "DataManagement/views/User_Login_page.html"
+                window.location.href = "User_Login_page.html"
             }
             else{
-                $('#usernameDisplay').append(data["username"]);
+                $('#usernameDisplay').append(data["name"]);
             }
         },
         error : function(error){
-            alert("error");
+            console.log("error");
         }
     })
 });

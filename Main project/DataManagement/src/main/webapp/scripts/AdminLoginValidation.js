@@ -1,9 +1,9 @@
 $(document).ready(function (){
     $("#errors").hide();
     $("#AdminLoginServlet").on("click",function(){
-        var userName = $('#Username').val();
-        var password = $('#Password').val();
-        if(userName.length != 0 && password.length != 0){
+        var userName = $('#Username').val().trim();
+        var password = $('#Password').val().trim();
+        if(userName.length >= 8 && password.length >=8){
             $.ajax({
                 url : "../AdminLoginServlet",
                 type : "POST",
@@ -13,40 +13,37 @@ $(document).ready(function (){
                 },
                 success : function(event){
                     var data = JSON.parse(event);
-                    if(data["username"] === "true" && data["password"] === "true"){
+                    if(data["username"] === "true" && data["password"] === "true" && data["type"] === "admin"){
                         $("#errors").hide();
-                        window.location.href = "DA"
+                        window.location.href = "UserDashBoard.html"
                         return;
                     }
                     else if(data["username"] === "true" && data["password"] === "false"){
                         $("#errors").text("Password wrong");
                         $("#errors").show();
-                        //alert("Password wrong");
                         return;
                     }
                     else{
                         $("#errors").text("Username does not exist");
                         $("#errors").show();
-                        alert("user does not exist");
                     }
                 },
                 error : function(err){
                     alert("error");
+                    }
+                })
+            }
+            else{
+                if(userName.length < 8){
+                    $("#errors").text("Enter Username with more than 7 charaters");
+                    $("#errors").show();
+                    return;
                 }
-            })
-        }
-        else{
-            if(userName.length == 0){
-                $("#errors").text("Enter a valid username");
-                $("#errors").show();
-                return;
+                if(password.length < 8){
+                    $("#errors").text("Enter password with more than 7 charaters");
+                    $("#errors").show();
+                    return;
+                }
             }
-            if(password.length == 0){
-                $("#errors").text("Enter a valid password");
-                $("#errors").show();
-                return;
-            }
-        }
-
-    });
+        });
 });

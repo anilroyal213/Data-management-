@@ -67,7 +67,7 @@ public class AdminLoginServlet extends HttpServlet {
 		if(isAvalable) {
 			if(enteredpassword.equals(password)){
 				HttpSession session = request.getSession();
-				session.setAttribute("type", "user");
+				session.setAttribute("type", "admin");
 				session.setAttribute("username", entereduserName);
 				object.put("username", "true");
 				object.put("password", "true");
